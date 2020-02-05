@@ -14,14 +14,26 @@ module.exports = function(app) {
     });
 
     // Add new exercise to workout
-    app.put('/api/workouts/:id', (req,res) => {
-
+    app.put('/api/workouts/:id', ({params, body},res) => {
+        db.Workout.findByIdAndUpdate(params.id, 
+            {$push: 
+                { exercises: body } 
+            }, 
+            { new: true }, 
+            updatedWorkout => {
+                res.json(updatedWorkout);
+            }
+        );
     });
 
     // Create workout
     app.post('/api/workouts', (req,res) => {
-        
+        db.Workout.create({}).then(newWorkout => { 
+            res.json(newWorkout);
+        });
     });
+
+
     
 
 }
