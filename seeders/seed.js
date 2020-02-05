@@ -82,11 +82,6 @@ module.exports = function(db) {
   db.Workout.deleteMany({}).then(() => {
       var workout = new db.Workout();
       workout.exercises = exerciseSeed;
-      workout.setTotalDuration();
-      workout.setTotalDistance();
-      workout.setTotalReps();
-      workout.setTotalWeight();
-      workout.setTotalSets();
 
       db.Workout.create(workout)
       .then(newWorkout => { return newWorkout; })
