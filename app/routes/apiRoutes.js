@@ -15,15 +15,27 @@ module.exports = function(app) {
 
     // Add new exercise to workout
     app.put('/api/workouts/:id', ({params, body},res) => {
-        db.Workout.findByIdAndUpdate(params.id, 
+        db.Workout.findOneAndUpdate({ _id: params.id}, 
             {$push: 
                 { exercises: body } 
             }, 
-            { new: true }, 
+            { 
+                upsert: true,
+                useFindAndModify: false 
+            }, 
             updatedWorkout => {
                 res.json(updatedWorkout);
             }
         );
+        // db.Workout.findByIdAndUpdate(params.id, 
+        //     {$push: 
+        //         { exercises: body } 
+        //     }, 
+        //     { new: true }, 
+        //     updatedWorkout => {
+        //         res.json(updatedWorkout);
+        //     }
+        // );
     });
 
     // Create workout

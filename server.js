@@ -18,7 +18,7 @@ require("./app/routes/apiRoutes.js")(app);
 require("./app/routes/htmlRoutes.js")(app);
 
 //Uncomment Line 21 to create demo data
-require('./seeders/seed.js')(db);
+// require('./seeders/seed.js')(db);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

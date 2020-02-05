@@ -89,7 +89,7 @@ module.exports = function(db) {
       workout.setTotalSets();
 
       db.Workout.create(workout)
-      .then(newWorkout => console.log(newWorkout))
+      .then(newWorkout => { return newWorkout; })
       .catch(err => console.log(err));
   });
 
