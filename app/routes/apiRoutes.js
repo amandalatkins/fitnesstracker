@@ -27,15 +27,6 @@ module.exports = function(app) {
                 res.json(updatedWorkout);
             }
         );
-        // db.Workout.findByIdAndUpdate(params.id, 
-        //     {$push: 
-        //         { exercises: body } 
-        //     }, 
-        //     { new: true }, 
-        //     updatedWorkout => {
-        //         res.json(updatedWorkout);
-        //     }
-        // );
     });
 
     // Create workout
